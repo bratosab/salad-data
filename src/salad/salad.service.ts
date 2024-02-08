@@ -28,7 +28,10 @@ export class SaladService {
     return this.saladRepo.save(salad);
   }
 
-  addTopping(topping: Topping) {
-    return this.toppingRepo.save(topping);
+  async addToppings(saladId: number, toppings: Topping[]) {
+    const salad = await this.findOne(saladId);
+    salad.toppings = [...toppings];
+
+    return this.saladRepo.save(salad);
   }
 }
