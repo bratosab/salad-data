@@ -3,6 +3,8 @@ import { SaladService } from './salad.service';
 import { ToppingService } from './topping.service';
 import { DressingService } from './dressing.service';
 import { Salad } from '../entities/salad.entity';
+import { Topping } from '../entities/topping.entity';
+import { Dressing } from '../entities/dressing.entity';
 
 @Controller('salad')
 export class SaladController {
@@ -15,14 +17,24 @@ export class SaladController {
   @Get()
   async getAll() {
     const salads = await this.saladService.findAll();
-    console.log(salads);
     return salads;
   }
 
   @Post()
   async addSalad(@Body() salad: Salad) {
     const createdSalad = await this.saladService.add(salad);
-    console.log(createdSalad);
     return createdSalad;
+  }
+
+  @Post('topping')
+  async addTopping(@Body() topping: Topping) {
+    const createdTopping = await this.toppingService.add(topping);
+    return createdTopping;
+  }
+
+  @Post('dressing')
+  async addDressing(@Body() dressing: Dressing) {
+    const createdDressing = await this.dressingService.add(dressing);
+    return createdDressing;
   }
 }

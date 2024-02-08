@@ -8,6 +8,6 @@ export class Dressing {
   @Column()
   name: string;
 
-  @Column()
+  @Column('decimal')
   price: number;
 }

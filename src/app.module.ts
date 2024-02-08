@@ -15,6 +15,7 @@ import { SaladModule } from './salad/salad.module';
       database: 'salad-maria',
       autoLoadEntities: true,
       synchronize: true,
+      logging: 'all'
     }),
     SaladModule,
   ],
